@@ -13,5 +13,5 @@
 - type `npm install`, press enter
 - type `npm start`, press enter and web app will run
 
-### Tip
+### Important Tip
 - To create template code use `rfce` in `.js` file
