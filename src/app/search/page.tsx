@@ -1,50 +1,47 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BookCard from "@/components/custom/BookCard";
 import Footer from "@/components/custom/Footer";
 import Header from "@/components/custom/Header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-const books = [
-  {
-    title: "Book 1",
-    description: "An introductory book on JavaScript.",
-    price: "$29",
-    date: "29 Oct - 5 Nov",
-  },
-  {
-    title: "Book 2",
-    description: "Advanced techniques in web development.",
-    price: "$45",
-    date: "1 Nov - 8 Nov",
-  },
+// Define the TypeScript interface for a book
+interface Book {
+  bookid: number;
+  bookname: string;
+  
+}
 
-  {
-    title: "Book 3",
-    description: "Understanding TypeScript.",
-    price: "$35",
-    date: "10 Nov - 17 Nov",
-  },
-  {
-    title: "Book 4",
-    description: "Mastering React.",
-    price: "$40",
-    date: "20 Nov - 27 Nov",
-  },
-  {
-    title: "Book 5",
-    description: "CSS for Beginners.",
-    price: "$25",
-    date: "5 Dec - 12 Dec",
-  },
-];
 export default function Component() {
   const [searchQuery, setSearchQuery] = useState("");
-  const filteredBooks = books.filter((book) =>
-    book.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const [books, setBooks] = useState<Book[]>([]); // Annotate with Book[]
+  const [filteredBooks, setFilteredBooks] = useState<Book[]>([]);
+
+  // Fetch books from the API
+  useEffect(() => {
+    const fetchBooks = async () => {
+      try {
+        const response = await fetch("http://localhost:4000/api/books");
+        const data = await response.json();
+        setBooks(data.books);
+        setFilteredBooks(data.books);
+      } catch (error) {
+        console.error("Error fetching books:", error);
+      }
+    };
+    fetchBooks();
+  }, []);
+
+  // Filter books based on the search query
+  useEffect(() => {
+    setFilteredBooks(
+      books.filter((book) =>
+        book.bookname.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    );
+  }, [searchQuery, books]);
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -65,14 +62,17 @@ export default function Component() {
             </div>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredBooks.length > 0 ? (
-              filteredBooks.map((book, i) => <BookCard key={i} book={book} />)
-            ) : (
-              <p className="text-center text-gray-500">
-                No books found for &quot;{searchQuery}&quot;
-              </p>
-            )}
-          </div>
+  {filteredBooks.length > 0 ? (
+    filteredBooks.map((book) => (
+      <BookCard key={book.bookid} book={book} />
+    ))
+  ) : (
+    <p className="text-center text-gray-500">
+      No books found for &quot;{searchQuery}&quot;
+    </p>
+  )}
+</div>
+
         </div>
       </main>
       <Footer />
