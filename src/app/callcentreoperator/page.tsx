@@ -42,7 +42,7 @@ export default function AdminDashboard() {
       <main className="flex-1 px-4 py-8 lg:px-8">
         <div className="mx-auto max-w-6xl space-y-8">
           <div className="space-y-2 text-center">
-            <h1 className="text-3xl font-bold">Admin</h1>
+            <h1 className="text-3xl font-bold">Call Centre Operator</h1>
             <div className="mx-auto flex max-w-md gap-2">
               <Input
                 placeholder="Search Users"
@@ -71,6 +71,8 @@ export default function AdminDashboard() {
                   <h2 className="text-xl font-bold">{user.full_name}</h2>
                   <p className="text-gray-700">Email: {user.email}</p>
                   <p className="text-gray-500">Password: {user.password}</p>
+                  <p className="text-gray-500">Subscription: £4.99/month</p>
+                  
                 </div>
               ))}
             </div>
