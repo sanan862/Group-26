@@ -9,7 +9,8 @@ const Header = ({ isLoggedIn = false }: { isLoggedIn?: boolean }) => {
       <nav className="container flex items-center justify-between py-4">
         <Link href="/" className="text-4xl font-bold">
           {/* AML */}
-          WTF
+          {/* SANE */}
+          SNEM
         </Link>
         <div className="flex items-center gap-4 sm:gap-6">
           <Link href="/" className="text-sm font-medium">

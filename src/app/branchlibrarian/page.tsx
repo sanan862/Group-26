@@ -22,6 +22,8 @@ export default function Component() {
   const [isAddBookModalOpen, setIsAddBookModalOpen] = useState(false);
   const [newBookName, setNewBookName] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [deleteBookId, setDeleteBookId] = useState("");
+  const [deleteErrorMessage, setDeleteErrorMessage] = useState("");
 
   // Fetch books from the API
   useEffect(() => {
@@ -85,6 +87,41 @@ export default function Component() {
     }
   };
 
+
+  // Handle deleting a book
+  const handleDeleteBook = async () => {
+    if (!deleteBookId.trim()) {
+      setDeleteErrorMessage("Book ID is required.");
+      return;
+    }
+
+    try {
+      const response = await fetch(`http://localhost:4000/api/books/${deleteBookId}`, {
+        method: "DELETE",
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to delete book.");
+      }
+
+      // Refresh the book list after deleting a book
+      const updatedBooks = await fetch("http://localhost:4000/api/books").then((res) =>
+        res.json()
+      );
+      setBooks(updatedBooks.books);
+      setFilteredBooks(updatedBooks.books);
+
+      // Reset the input field and error message
+      setDeleteBookId("");
+      setDeleteErrorMessage("");
+    } catch (error: any) {
+      console.error("Error deleting book:", error);
+      setDeleteErrorMessage(error.message || "An unexpected error occurred.");
+    }
+  };
+
   return (
     <div className="flex min-h-screen flex-col">
       <Header isLoggedIn />
@@ -104,6 +141,23 @@ export default function Component() {
               </Button>
             </div>
           </div>
+
+          <div className="space-y-4 text-center">
+            <h2 className="text-xl font-bold">Delete a Book</h2>
+            {deleteErrorMessage && <p className="text-red-500">{deleteErrorMessage}</p>}
+            <div className="mx-auto flex max-w-md gap-2">
+              <Input
+                placeholder="Enter Book ID"
+                value={deleteBookId}
+                onChange={(e) => setDeleteBookId(e.target.value)}
+              />
+              <Button onClick={handleDeleteBook} className="bg-red-500 text-white">
+                Delete
+              </Button>
+            </div>
+          </div>
+
+          
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filteredBooks.length > 0 ? (
               filteredBooks.map((book) => (
