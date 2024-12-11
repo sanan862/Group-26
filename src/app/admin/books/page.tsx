@@ -1,16 +1,20 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import Footer from "@/components/custom/Footer";
 import Header from "@/components/custom/Header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import VerifyModal from "@/components/custom/VerifyModal";
+import Link from "next/link";
+import { useRouter } from "next/navigation"; // Import useRouter for redirection
 
 export default function AdminDashboard() {
   const [users, setUsers] = useState([]); // State for fetched users
   const [loading, setLoading] = useState(true); // Loading state
   const [error, setError] = useState(null); // Error state
   const [searchQuery, setSearchQuery] = useState(""); // Search query
+  const router = useRouter(); // Initialize router to handle redirects
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -21,7 +25,7 @@ export default function AdminDashboard() {
         }
         const data = await response.json();
         setUsers(data.users);
-      } catch (err:any) {
+      } catch (err: any) {
         setError(err.message);
       } finally {
         setLoading(false);
@@ -31,11 +35,38 @@ export default function AdminDashboard() {
     fetchUsers();
   }, []);
 
+
+  
+
   // Filter users based on the search query
-  const filteredUsers = users.filter((user:any) =>
+  const filteredUsers = users.filter((user: any) =>
     user.full_name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  // Logout handler
+  const handleLogout = async () => {
+    try {
+      const token = localStorage.getItem("authToken");
+      if (!token) {
+        throw new Error("No auth token found");
+      }
+      // Logout API request (Optional if server-side session management exists)
+      await fetch("http://localhost:4000/api/logout", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+      // Clear the token from localStorage
+      localStorage.removeItem("authToken");
+      // Redirect to login page
+      router.push("/");
+    } catch (err) {
+      console.error("Logout failed:", err);
+    }
+  };
+  
   return (
     <div className="flex min-h-screen flex-col">
       <Header isLoggedIn />
@@ -51,9 +82,20 @@ export default function AdminDashboard() {
               />
               <Button onClick={() => setSearchQuery(searchQuery)}>Search</Button>
               {/* <VerifyModal> */}
-                {/* <Button>Add New Book</Button> */}
+              {/* <Button>Add New Book</Button> */}
               {/* </VerifyModal> */}
-
+              <Link href="/register-branch-librarian">
+                <Button className="text-sm font-medium">
+                  Register Branch Librarian
+                </Button>
+              </Link>
+              {/* Logout Button */}
+              <Button
+                onClick={handleLogout}
+                className="text-sm font-medium text-red-500"
+              >
+                Log Out
+              </Button>
             </div>
           </div>
 
@@ -63,7 +105,7 @@ export default function AdminDashboard() {
             <p className="text-center text-red-500">{error}</p>
           ) : filteredUsers.length > 0 ? (
             <div className="space-y-4">
-              {filteredUsers.map((user:any) => (
+              {filteredUsers.map((user: any) => (
                 <div
                   key={user.userid}
                   className="rounded-lg border p-4 shadow-sm"

@@ -10,34 +10,34 @@ export default function Component() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
-  const handleSubmit = async (event:any) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
-
+  
     try {
       const response = await fetch("http://localhost:4000/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }), // Send only email and password
+        body: JSON.stringify({ email, password }),
       });
-
+  
       const data = await response.json();
-
+  
       if (!response.ok) {
         throw new Error(data.error);
       }
-
+  
       // Save the token in localStorage
       localStorage.setItem('authToken', data.token);
-
+  
       alert('Login successful!');
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error during login:", error);
-      // setError("An unexpected error occurred. Please try again.");
+      setError(error.message); // Properly update the error state
     }
   };
-
+  
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-50">
       <div className="w-full max-w-md space-y-8 rounded-lg bg-white p-8 shadow-lg">
