@@ -1,6 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import ProfileNav from "@/components/custom/Profilenav";
+import Header from "@/components/custom/Header";
 
 export default function ProfilePage() {
   const [userInfo, setUserInfo] = useState({ full_name: "", email: "", password: "" });
@@ -48,7 +50,11 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="max-w-lg mx-auto p-8 bg-white shadow-md rounded">
+<div>
+<Header isLoggedIn />
+
+  <ProfileNav/>
+<div className="max-w-lg mx-auto p-8 bg-white shadow-md rounded">
       <h1 className="text-2xl font-bold mb-4">Profile Page</h1>
       <div className="mb-2">
         <strong>Full Name:</strong> {userInfo.full_name}
@@ -60,5 +66,7 @@ export default function ProfilePage() {
         <strong>Password:</strong> {userInfo.password}
       </div>
     </div>
+
+</div>
   );
 }

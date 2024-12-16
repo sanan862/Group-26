@@ -4,15 +4,18 @@ import Image from "next/image";
 import { Button } from "../ui/button";
 import bookImage from "@/../public/book.jpg";
 
-interface Book {
-  bookid: number;
-  bookname: string;
+interface Media {
+  id: number;
+  name: string;
+  genre: string;
+  publishedate: string;
+  mediatype: string;
 }
 
-const handleBorrow = async (bookId: any) => {
+const handleBorrow = async (id: any) => {
   const token = localStorage.getItem('authToken');
   if (!token) {
-    alert('Please log in to borrow a book.');
+    alert('Please log in to borrow media.');
     return;
   }
 
@@ -23,7 +26,7 @@ const handleBorrow = async (bookId: any) => {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
       },
-      body: JSON.stringify({ bookId }),
+      body: JSON.stringify({ id }),
     });
 
     const data = await response.json();
@@ -32,13 +35,13 @@ const handleBorrow = async (bookId: any) => {
       throw new Error(data.error);
     }
 
-    alert('Book borrowed successfully!');
+    alert('media borrowed successfully!');
   } catch (error: any) {
-    alert(error.message || 'Failed to borrow book.');
+    alert(error.message || 'Failed to borrow media.');
   }
 };
 
-const handleReturn = async (bookId: any) => {
+const handleReturn = async (id: any) => {
   const token = localStorage.getItem('authToken');
   if (!token) {
     alert('Please log in to return a book.');
@@ -52,7 +55,7 @@ const handleReturn = async (bookId: any) => {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
       },
-      body: JSON.stringify({ bookId }),
+      body: JSON.stringify({ id }),
     });
 
     const data = await response.json();
@@ -67,7 +70,7 @@ const handleReturn = async (bookId: any) => {
   }
 };
 
-const BookCard: React.FC<{ book: Book; isBorrowed?: boolean }> = ({ book, isBorrowed = false }) => {
+const BookCard: React.FC<{ book: Media; isBorrowed?: boolean }> = ({ book, isBorrowed = false }) => {
   return (
     <Card className="overflow-hidden">
       <div className="aspect-[4/3] bg-muted">
@@ -80,15 +83,18 @@ const BookCard: React.FC<{ book: Book; isBorrowed?: boolean }> = ({ book, isBorr
         />
       </div>
       <div className="p-4">
-        <h3 className="text-xl font-bold">{book.bookname}</h3>
-        <p className="text-sm text-muted-foreground">{`Book ID: ${book.bookid}`}</p>
+        <h3 className="text-xl font-bold">{book.name}</h3>
+        <p className="text-sm text-muted-foreground">{`Genre: ${book.genre}`}</p>
+        <p className="text-sm text-muted-foreground">{`Publishe Date: ${book.publishedate}`}</p>
+        <p className="text-sm text-muted-foreground">{`Media Type: ${book.mediatype}`}</p>
+        <p className="text-sm text-muted-foreground">{`Book ID: ${book.id}`}</p>
         <div className="mt-4 flex items-center justify-between gap-2">
           {/* {isBorrowed ? ( */}
-          <Button variant="default" onClick={() => handleBorrow(book.bookid)}>
+          <Button variant="default" onClick={() => handleBorrow(book.id)}>
               Borrow Book
             </Button>
 
-            <Button variant="default" onClick={() => handleReturn(book.bookid)}>
+            <Button variant="default" onClick={() => handleReturn(book.id)}>
               Return Book
             </Button>
           {/* ) : ( */}

@@ -16,7 +16,7 @@ export default function Component() {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:4000/api/login", {
+      const response = await fetch("http://localhost:4000/api/branchlibrarian", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -36,7 +36,7 @@ export default function Component() {
       alert("Login successful!");
 
       // Redirect to dashboard
-      router.push("/dashboard");
+      router.push("/branchlibrarian");
     } catch (error: any) {
       console.error("Error during login:", error);
       setError(error.message);
@@ -88,12 +88,12 @@ export default function Component() {
           <Link className="text-sm text-gray-500 hover:text-gray-900" href="/">
             Forgot your password?
           </Link>
-          <div className="text-sm">
+          {/* <div className="text-sm">
             {"Don&quot;t have an account? "}
             <Link className="font-medium hover:text-gray-900" href="/signup">
               Sign Up
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
