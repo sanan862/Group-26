@@ -7,9 +7,9 @@ module.exports = {
     '^@/(.*)$': '<rootDir>/src/$1', // Resolve @ paths to src
     '\\.(jpg|jpeg|png|gif|webp|avif|svg)$': '<rootDir>/__mocks__/fileMock.js', // Mock image files
   },
-  transformIgnorePatterns: [
-    'node_modules/(?!(some-esm-library)/)',  // Allow transformation of certain ESM dependencies
-  ],
+  setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
+
+  transformIgnorePatterns: ['node_modules/(?!(some-esm-library)/)'], // Allow transformation of ESM dependencies if needed
 };
 
 // module.exports = {

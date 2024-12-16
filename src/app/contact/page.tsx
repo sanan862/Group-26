@@ -3,27 +3,16 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import Header from "@/components/custom/Header";
+import ProfileNav from "@/components/custom/Profilenav";
 import emailjs from "emailjs-com";
 
 function Navbar() {
   return (
-    <nav className="bg-gray-800 p-4">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <div className="text-white text-2xl font-bold">MySite</div>
-        <div className="space-x-4">
-          <Link href="/" className="text-white hover:text-gray-400">
-            Home
-          </Link>
-          <Link href="/about" className="text-white hover:text-gray-400">
-            About
-          </Link>
-          <Link href="/contact" className="text-white hover:text-gray-400">
-            Contact
-          </Link>
-          <Link href="/login" className="text-white hover:text-gray-400">
-            Login
-          </Link>
-        </div>
+    <nav >
+      <div className="max-w-7xl mx-auto ">
+      <Header isLoggedIn />
+      <ProfileNav />
       </div>
     </nav>
   );

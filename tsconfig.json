@@ -6,18 +6,18 @@
       "dom.iterable",
       "esnext"
     ],
-    "allowJs": true, // Allow JS files alongside TS/TSX
-    "skipLibCheck": true, // Skip type checking of declaration files for faster builds
-    "strict": true, // Enforce strict type checking
-    "noEmit": true, // Don't output compiled files
-    "esModuleInterop": true, // Enable compatibility between CommonJS and ES Modules
-    "module": "esnext", // Use ES modules, the default for Next.js
-    "moduleResolution": "node", // Node module resolution strategy
-    "resolveJsonModule": true, // Allows importing .json files
-    "allowSyntheticDefaultImports": true, // Allow default imports from modules that do not have a default export
-    "isolatedModules": true, // Treat each file as an isolated module (useful for Next.js)
-    "jsx": "react-jsx", // JSX transform for React 17+
-    "incremental": true, // Enables incremental builds for faster compilation
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
     "plugins": [
       {
         "name": "next" // Include Next.js TypeScript plugin for enhanced support

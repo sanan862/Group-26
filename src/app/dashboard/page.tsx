@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation"; // For navigation
 import BookCard from "@/components/custom/BookCard";
 import Footer from "@/components/custom/Footer";
 import Header from "@/components/custom/Header";
+import ProfileNav from "@/components/custom/Profilenav";
+
 
 export default function Dashboard() {
   const [borrowedBooks, setBorrowedBooks] = useState([]);
@@ -92,9 +94,12 @@ export default function Dashboard() {
   return (
     <div className="flex min-h-screen flex-col">
       <Header isLoggedIn />
+      <ProfileNav />
+
       <main className="flex-1 px-4 py-8 lg:px-8">
         <div className="mx-auto max-w-6xl space-y-8">
           <div className="flex items-center justify-between">
+          {/* <ProfileNav /> */}
             <h1 className="text-3xl font-bold">Welcome, {userFullName}!</h1>
             <button
               onClick={handleLogout}
