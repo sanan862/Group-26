@@ -1,42 +1,42 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "target": "ES6", // Ensures compatibility with ES6+ syntax
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "isolatedModules": true,
-    "jsx": "react-jsx",
-    "incremental": true,
+    "allowJs": true, // Allow JS files alongside TS/TSX
+    "skipLibCheck": true, // Skip type checking of declaration files for faster builds
+    "strict": true, // Enforce strict type checking
+    "noEmit": true, // Don't output compiled files
+    "esModuleInterop": true, // Enable compatibility between CommonJS and ES Modules
+    "module": "esnext", // Use ES modules, the default for Next.js
+    "moduleResolution": "node", // Node module resolution strategy
+    "resolveJsonModule": true, // Allows importing .json files
+    "allowSyntheticDefaultImports": true, // Allow default imports from modules that do not have a default export
+    "isolatedModules": true, // Treat each file as an isolated module (useful for Next.js)
+    "jsx": "react-jsx", // JSX transform for React 17+
+    "incremental": true, // Enables incremental builds for faster compilation
     "plugins": [
       {
-        "name": "next"
+        "name": "next" // Include Next.js TypeScript plugin for enhanced support
       }
     ],
     "paths": {
       "@/*": [
-        "./src/*"
+        "./src/*" // Map '@' to the src folder (custom path alias for imports)
       ]
     }
   },
   "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "src/**/*",
-    ".next/types/**/*.ts"
+    "next-env.d.ts", // Include Next.js type definitions
+    "**/*.ts", // Include TypeScript files
+    "**/*.tsx", // Include TypeScript React files
+    "src/**/*", // Include all source files
+    ".next/types/**/*.ts" // Include Next.js type definitions for server-side code
   ],
   "exclude": [
-    "node_modules"
+    "node_modules" // Exclude node_modules folder from compilation
   ]
 }
