@@ -108,7 +108,7 @@ export default function Dashboard() {
               Logout
             </button>
           </div>
-          <h2 className="text-3xl font-bold text-center">My Borrowed Books</h2>
+          <h2 className="text-3xl font-bold text-center">My Borrowed Media</h2>
           {loading ? (
             <p className="text-center text-gray-500">Loading...</p>
           ) : error ? (

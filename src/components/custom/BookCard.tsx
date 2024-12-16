@@ -91,11 +91,11 @@ const BookCard: React.FC<{ book: Media; isBorrowed?: boolean }> = ({ book, isBor
         <div className="mt-4 flex items-center justify-between gap-2">
           {/* {isBorrowed ? ( */}
           <Button variant="default" onClick={() => handleBorrow(book.id)}>
-              Borrow Book
+              Borrow
             </Button>
 
             <Button variant="default" onClick={() => handleReturn(book.id)}>
-              Return Book
+              Return
             </Button>
           {/* ) : ( */}
           {/* )} */}
