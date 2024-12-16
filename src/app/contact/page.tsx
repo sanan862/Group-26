@@ -7,7 +7,6 @@ import Header from "@/components/custom/Header";
 import ProfileNav from "@/components/custom/Profilenav";
 import emailjs from "emailjs-com";
 
-// Navbar component (from the first code)
 function Navbar() {
   return (
     <nav >
@@ -39,15 +38,14 @@ export default function ContactPage() {
     setError("");
     setSuccess("");
 
-    // Simple validation
     if (!formData.fullName || !formData.email || !formData.message) {
       return setError("All fields are required.");
     }
 
     // EmailJS integration
-    const serviceId = "service_410vvos"; // Your EmailJS service ID
-    const templateId = "template_onyyr0j"; // Your EmailJS template ID
-    const publicKey = "kRJdXdNBhEKSyn9cJ"; // Your EmailJS public key
+    const serviceId = "service_410vvos"; 
+    const templateId = "template_onyyr0j"; 
+    const publicKey = "kRJdXdNBhEKSyn9cJ"; 
 
     emailjs
       .send(
@@ -64,12 +62,11 @@ export default function ContactPage() {
         (response:any) => {
           console.log("Success:", response);
           setSuccess("Message sent successfully!");
-          setFormData({ fullName: "", email: "", message: "" }); // Clear the form
+          setFormData({ fullName: "", email: "", message: "" }); 
         },
         (error:any) => {
           console.error("EmailJS Error:", error);
 
-          // If error has a response, log it
           if (error.response) {
             console.error("Error Response:", error.response);
             setError(`Failed to send the message. ${error.response}`);
