@@ -26,10 +26,10 @@ export default function Home() {
         <div className="container relative flex items-center justify-center h-[60vh]">
           <div className="flex flex-col items-center justify-center w-full gap-4 ">
             <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Book Reading System Simplified
+              Media System Simplified
             </h1>
             <p className="text-xl text-white/80">
-              Manage your book collection effortlessly with our intuitive book
+              Manage your collection effortlessly with our intuitive media
               management system.
             </p>
             <div className="flex gap-4">
@@ -57,20 +57,20 @@ export default function Home() {
         <div className="container relative">
           <div className="flex flex-col gap-4 text-center mb-16">
             <h2 className="text-3xl font-bold tracking-tight text-black sm:text-4xl">
-              Explore the Key Features of Our Book Management Services
+              Explore the Key Features of Our Media Management Services
             </h2>
             <p className="text-xl text-black/80 mx-auto max-w-[800px]">
-              Discover the ease of managing your book collection with our
+              Discover the ease of managing your Media collection with our
               comprehensive services.
             </p>
           </div>
           <div className="flex gap-40 items-center justify-center">
             <div className="grid gap-4">
               <h3 className="text-xl font-bold text-black">
-                Effortlessly Catalog Your Books
+                Effortlessly Catalog Your Medias
               </h3>
               <p className="text-black/80">
-                Efficiently organize your books with ease.
+                Efficiently organize your Media with ease.
               </p>
               <div className="flex gap-4">
                 <Button>Get Started</Button>
@@ -97,10 +97,10 @@ export default function Home() {
             </div>
             <div className="grid gap-4">
               <h3 className="text-xl font-bold text-black">
-                Track Your Books Seamlessly
+                Track Your Media Seamlessly
               </h3>
               <p className="text-black/80">
-                Effortlessly keep track of your books with our seamless tracking
+                Effortlessly keep track of your Media with our seamless tracking
                 system.
               </p>
             </div>
