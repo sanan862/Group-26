@@ -7,5 +7,7 @@ module.exports = {
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1', // Resolve @ paths to src
   },
+  setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
+
   transformIgnorePatterns: ['node_modules/(?!(some-esm-library)/)'], // Allow transformation of ESM dependencies if needed
 };

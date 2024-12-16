@@ -1,5 +1,7 @@
 "use client";
+
 import { useState } from "react";
+import { useRouter } from "next/navigation"; // Import useRouter for navigation
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
@@ -14,6 +16,7 @@ export default function Component() {
 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const router = useRouter(); // Initialize the router
 
   const handleInputChange = (e: any) => {
     const { id, value } = e.target;
@@ -49,6 +52,11 @@ export default function Component() {
       }
 
       setSuccess(result.message || "Account created successfully!");
+
+      // Redirect to login page after a short delay to show success message
+      setTimeout(() => {
+        router.push("/login");
+      }, 2000); // Adjust delay as needed
     } catch (err: any) {
       setError(err.message);
     }
