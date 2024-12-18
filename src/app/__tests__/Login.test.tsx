@@ -109,27 +109,5 @@ describe("Login Component", () => {
     });
   });
 
-  // it("does not redirect or store token if login fails", async () => {
-  //   global.fetch = jest.fn().mockResolvedValueOnce({
-  //     ok: false,
-  //     json: async () => ({ error: "Invalid credentials" }),
-  //   });
-
-  //   render(<Component />);
-
-  //   fireEvent.change(screen.getByPlaceholderText("Email"), {
-  //     target: { value: "test@example.com" },
-  //   });
-  //   fireEvent.change(screen.getByPlaceholderText("Password"), {
-  //     target: { value: "wrongpassword" },
-  //   });
-
-  //   fireEvent.click(screen.getByRole("button", { name: /log in/i }));
-
-  //   await waitFor(() => {
-  //     expect(localStorage.getItem("authToken")).toBeNull();
-  //     expect(mockPush).not.toHaveBeenCalled();
-  //   });
-  // });
     
 });
