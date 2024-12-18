@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "target": "ES6", // Ensures compatibility with ES6+ syntax
     "lib": [
       "dom",
       "dom.iterable",
@@ -20,23 +20,23 @@
     "incremental": true,
     "plugins": [
       {
-        "name": "next"
+        "name": "next" // Include Next.js TypeScript plugin for enhanced support
       }
     ],
     "paths": {
       "@/*": [
-        "./src/*"
+        "./src/*" // Map '@' to the src folder (custom path alias for imports)
       ]
     }
   },
   "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "src/**/*",
-    ".next/types/**/*.ts"
+    "next-env.d.ts", // Include Next.js type definitions
+    "**/*.ts", // Include TypeScript files
+    "**/*.tsx", // Include TypeScript React files
+    "src/**/*", // Include all source files
+    ".next/types/**/*.ts" // Include Next.js type definitions for server-side code
   ],
   "exclude": [
-    "node_modules"
+    "node_modules" // Exclude node_modules folder from compilation
   ]
 }
