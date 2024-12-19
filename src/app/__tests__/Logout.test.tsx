@@ -2,6 +2,8 @@ import { fireEvent, render, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { useRouter } from "next/navigation";
 //Code structure from ChatGPT
+
+//Code structure from ChatGPT
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
 }));

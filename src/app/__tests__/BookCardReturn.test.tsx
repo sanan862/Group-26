@@ -1,6 +1,7 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import BookCard from "@/components/custom/BranchLibBookCard";
+//Code structure from ChatGPT
 
 // Mock the useRouter function from Next.js
 jest.mock("next/navigation", () => ({
