@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import Component from "../(auth)/signup/page";  // Import your component
 import '@testing-library/jest-dom/extend-expect';
 import { useRouter } from "next/navigation";
+//Code structure from ChatGPT
 
 // Mock Next.js useRouter hook to prevent actual navigation
 jest.mock("next/navigation", () => ({

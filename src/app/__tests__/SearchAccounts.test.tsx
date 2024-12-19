@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import '@testing-library/jest-dom'; // Not "extend-expect"
 
 import { act } from 'react-dom/test-utils';
+//Code structure from ChatGPT
 
 // Mocking the necessary modules
 jest.mock('next/navigation', () => ({

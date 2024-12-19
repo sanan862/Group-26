@@ -3,6 +3,7 @@ import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import Dashboard from "../dashboard/page"; // Adjust the path to your component
 import { useRouter } from "next/navigation";
+//Code structure from ChatGPT
 
 // Mocking dependencies
 jest.mock("next/navigation", () => ({

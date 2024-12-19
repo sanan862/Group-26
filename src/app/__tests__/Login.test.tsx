@@ -1,7 +1,8 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import Component from "../(auth)/login/page"; // Adjust the import path as needed
+import Component from "../(auth)/login/page";
 import { useRouter } from "next/navigation";
-import '@testing-library/jest-dom'; // Not "extend-expect"
+import '@testing-library/jest-dom';
+//Code structure from ChatGPT
 
 // Mock the useRouter function from Next.js
 jest.mock("next/navigation", () => ({
@@ -26,22 +27,17 @@ const localStorageMock = (() => {
 })();
 Object.defineProperty(window, "localStorage", { value: localStorageMock });
 
-// Mock window.alert
+
 beforeEach(() => {
-  global.alert = jest.fn(); // Mock alert function
+  global.alert = jest.fn();
 });
 
 describe("Login Component", () => {
   const mockPush = jest.fn();
-
-  // beforeEach(() => {
-  //   jest.clearAllMocks();
-  //   (useRouter as jest.Mock).mockReturnValue({ push: mockPush });
-  // });
   beforeEach(() => {
     jest.clearAllMocks();
     (useRouter as jest.Mock).mockReturnValue({ push: mockPush });
-    global.console.error = jest.fn(); // Mocking console.error to prevent clutter
+    global.console.error = jest.fn();
   });
   
 
@@ -108,6 +104,4 @@ describe("Login Component", () => {
       expect(mockPush).toHaveBeenCalledWith("/dashboard");
     });
   });
-
-    
 });

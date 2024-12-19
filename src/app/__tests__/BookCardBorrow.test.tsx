@@ -1,13 +1,12 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import BookCard from "@/components/custom/BranchLibBookCard";
+// //Code structure from ChatGPT
 
-// Mock the useRouter function from Next.js
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
 }));
 
-// Mock localStorage
 const localStorageMock = (() => {
   let store: Record<string, string> = {};
   return {
@@ -25,10 +24,8 @@ const localStorageMock = (() => {
 })();
 Object.defineProperty(window, "localStorage", { value: localStorageMock });
 
-// Mock fetch API
 global.fetch = jest.fn() as jest.MockedFunction<typeof fetch>;
 
-// Utility function for setting up mock fetch responses
 const mockFetch = (response: Partial<Response>, jsonResponse: any) => {
   (global.fetch as jest.MockedFunction<typeof fetch>).mockResolvedValueOnce({
     ok: response.ok ?? true,
@@ -37,7 +34,6 @@ const mockFetch = (response: Partial<Response>, jsonResponse: any) => {
   } as Response);
 };
 
-// Mock window.alert
 beforeEach(() => {
   jest.clearAllMocks();
   global.alert = jest.fn();
