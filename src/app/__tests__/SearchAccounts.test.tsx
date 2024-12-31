@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import AdminDashboard from '../admin/books/page';
+import AdminDashboard from '../admin/admindashboard/page';
 import { useRouter } from 'next/navigation';
 // import '@testing-library/jest-dom/extend-expect';
 import '@testing-library/jest-dom'; // Not "extend-expect"

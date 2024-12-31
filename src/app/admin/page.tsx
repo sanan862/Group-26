@@ -45,7 +45,7 @@ const AdminAuthPage = () => {
       alert("Login successful");
 
       // Use Next.js router for navigation
-      router.push('/admin/books'); // Redirect to admin dashboard
+      router.push('/admin/admindashboard'); // Redirect to admin dashboard
 
     } catch (err: any) {
       setError(err.message || 'An unexpected error occurred.');

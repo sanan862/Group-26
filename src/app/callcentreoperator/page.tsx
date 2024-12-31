@@ -5,8 +5,9 @@ import Header from "@/components/custom/Header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import VerifyModal from "@/components/custom/VerifyModal";
+import router from "next/router";
 
-export default function AdminDashboard() {
+export default function callcentreoperator() {
   const [users, setUsers] = useState([]); // State for fetched users
   const [loading, setLoading] = useState(true); // Loading state
   const [error, setError] = useState(null); // Error state
@@ -15,6 +16,12 @@ export default function AdminDashboard() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
+        const token = localStorage.getItem("authToken");
+        if (!token) {
+          router.push("/");
+          return;
+        }
+  
         const response = await fetch("http://localhost:4000/api/register");
         if (!response.ok) {
           throw new Error("Failed to fetch users");
@@ -30,6 +37,25 @@ export default function AdminDashboard() {
 
     fetchUsers();
   }, []);
+
+
+  const handleLogout = async () => {
+    try {
+      const token = localStorage.getItem("authToken");
+      await fetch("http://localhost:4000/api/logout", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+      localStorage.removeItem("authToken"); // Remove token from storage
+      router.push("/login"); // Navigate to login page
+    } catch (err) {
+      console.error("Logout failed:", err);
+    }
+  };
+
 
   // Filter users based on the search query
   const filteredUsers = users.filter((user:any) =>
@@ -50,6 +76,13 @@ export default function AdminDashboard() {
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
               <Button onClick={() => setSearchQuery(searchQuery)}>Search</Button>
+              <Button
+                className="bg-red-600 text-white hover:bg-red-700"
+                onClick={handleLogout}
+              >
+                Log Out
+              </Button>
+
               {/* <VerifyModal> */}
                 {/* <Button>Add New Book</Button> */}
               {/* </VerifyModal> */}

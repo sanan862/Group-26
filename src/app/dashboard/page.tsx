@@ -40,6 +40,7 @@ export default function Dashboard() {
         router.push("/login");
         return;
       }
+      
 
       const response = await fetch("http://localhost:4000/api/user", {
         headers: {
