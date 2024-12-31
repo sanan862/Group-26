@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+### Installations
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Run Commands
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+#### Run Web App
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+npm start
+```
 
-## Learn More
+#### Run unit tests
+```
+npx jest
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Potential Errors
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#### testing error:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+$ npx jest
+ FAIL  src/app/__tests__/Component.test.tsx
+  ● Test suite failed to run
 
-## Deploy on Vercel
+    Jest encountered an unexpected token
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    Jest failed to parse a file. This happens e.g. when your code or its dependencies use non-standard JavaScript syntax, or when Jest is not configured to support such syntax.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    Out of the box Jest supports Babel, which will be used to transform your files into valid JS based on your Babel configuration.
+
+    By default "node_modules" folder is ignored by transformers.
+
+    Here's what you can do:
+     • If you are trying to use ECMAScript Modules, see https://jestjs.io/docs/ecmascript-modules for how to enable it.
+     • If you are trying to use TypeScript, see https://jestjs.io/docs/getting-started#using-typescript
+     • To have some of your "node_modules" files transformed, you can specify a custom "transformIgnorePatterns" in your config.
+     • If you need a custom transformation specify a "transform" option in your config.
+     • If you simply want to mock your non-JS modules (e.g. binary assets) you can stub them out with the "moduleNameMapper" config option.
+```
+In ```tsconfig.json``` change ```"jsx":"preserve"``` to ```"jsx":"react-jsx"``` and then run ```npx jest``` command in terminal.

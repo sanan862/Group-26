@@ -32,6 +32,7 @@ export default function Component() {
     mediatype: "",
     userid: 1, // Example user ID, you should dynamically assign it
   });
+  
   const [selectedValue, setSelectedValue] = React.useState('');
 
   // Options for the media type
@@ -59,6 +60,12 @@ export default function Component() {
       const data = await response.json();
       setBooks(data.media);
       setFilteredBooks(data.media);
+      const token = localStorage.getItem("authToken");
+      if (!token) {
+        router.push("/");
+        return;
+      }
+
     } catch (error) {
       console.error("Error fetching books:", error);
     }
