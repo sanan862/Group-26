@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { useRouter } from "next/navigation"; // Import useRouter for redirection
+import Media from "../media/page"
+
 
 // Define the type for a user
 interface User {
@@ -48,7 +50,7 @@ export default function AdminDashboard() {
     user.full_name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Delete user handler
+  // some snippets of this function were found using chatgpt
   const handleDelete = async (userId: number) => {
     try {
       const response = await fetch(`http://localhost:4000/api/register/${userId}`, {
@@ -138,6 +140,12 @@ export default function AdminDashboard() {
                   Register Branch Librarian
                 </Button>
               </Link>
+              <Link href="/admin/media" className="text-base hover:text-blue-500  font-medium hover/80">
+              <Button>
+              Check Media
+              </Button>
+          </Link>
+
               <Button
                 onClick={handleLogout}
                 className="text-sm font-medium text-red-500"

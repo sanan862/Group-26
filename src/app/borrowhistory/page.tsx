@@ -12,6 +12,7 @@ interface BorrowingHistory {
   dateborrowed: string;
 }
 
+// some snippets of this function were found using chatgpt
 function Page() {
   const [borrowingHistory, setBorrowingHistory] = useState<BorrowingHistory[]>([]);
   const [loading, setLoading] = useState(true);

@@ -121,7 +121,7 @@ export default function Component() {
     }));
   };
 
-  // Handle form submission for adding new media
+  // some snippets of this function were found using chatgpt
   const handleAddMedia = async (e: React.FormEvent) => {
     e.preventDefault();
 

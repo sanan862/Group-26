@@ -12,6 +12,7 @@ export default function Component() {
   const [error, setError] = useState<string | null>(null);
   const router = useRouter(); // Initialize the router
 
+// some snippets of this function were found using chatgpt
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
