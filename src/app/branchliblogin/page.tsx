@@ -10,8 +10,9 @@ export default function Component() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
-  const router = useRouter(); // Initialize the router
+  const router = useRouter(); 
 
+  // some snippets of this function were found using chatgpt
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 

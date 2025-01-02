@@ -59,7 +59,7 @@ export default function Dashboard() {
     }
   };
 
-  // Fetch borrowed books
+  // some snippets of this function were found using chatgpt
   const fetchBorrowedBooks = async () => {
     try {
       const token = localStorage.getItem("authToken");

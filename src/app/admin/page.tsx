@@ -1,5 +1,4 @@
 "use client";
-
 import Header from "@/components/custom/Header";
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -7,13 +6,14 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { useRouter } from "next/navigation"; // Import useRouter for redirection
 
+
 const AdminAuthPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const router = useRouter(); // Initialize the Next.js router for navigation
 
-  // Handle form submission (login)
+  // some snippets of this function were found using chatgpt
   const handleLogin = async (e: any) => {
     e.preventDefault();
 

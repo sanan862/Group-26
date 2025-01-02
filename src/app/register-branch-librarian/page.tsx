@@ -20,6 +20,7 @@ export default function Component() {
     setFormData((prev) => ({ ...prev, [id]: value }));
   };
 
+  // some snippets of this function were found using chatgpt
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     setError("");

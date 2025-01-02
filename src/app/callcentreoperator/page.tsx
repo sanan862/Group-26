@@ -38,7 +38,7 @@ export default function callcentreoperator() {
     fetchUsers();
   }, []);
 
-
+  // some snippets of this function were found using chatgpt
   const handleLogout = async () => {
     try {
       const token = localStorage.getItem("authToken");

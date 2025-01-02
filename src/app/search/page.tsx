@@ -22,8 +22,8 @@ export default function Component() {
   const [books, setBooks] = useState<Media[]>([]); // Annotate with Book[]
   const [filteredBooks, setFilteredBooks] = useState<Media[]>([]);
 
-  // Fetch books from the API
   useEffect(() => {
+  // some snippets of this function were found using chatgpt
     const fetchBooks = async () => {
       try {
         const response = await fetch("http://localhost:4000/api/media");
